@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    container_name: nest-app
+    ports:
+      - 3000:3000
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app/src
+  db:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - 9000:27017
+    restart: always
